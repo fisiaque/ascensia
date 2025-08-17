@@ -16,4 +16,4 @@ for f in "$script_directory/.config/"*; do
     ln -sf "$f" "$target"
 done
 
-echo "Finished Initializing Baya's Hyprland Dotfiles!"
+echo "Finished Updating Baya's Hyprland Dotfiles!"
