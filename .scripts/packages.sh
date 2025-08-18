@@ -2,7 +2,7 @@
 #!/bin/bash
 packages=(
     "kitty" "firefox" "brightnessctl" "playerctl" "dolphin" 
-    "wofi" 
+    "wofi" "wpctl"
 )
 
 sudo pacman -Syu
