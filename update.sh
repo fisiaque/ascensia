@@ -7,6 +7,9 @@ destination_directory="$HOME/.config/"
 # RUN PACKAGES
 bash "$scripts_directory/packages.sh"
 
+systemctl --user start pipewire
+systemctl --user enable pipewire
+
 for f in "$parent_directory/.config/"*; do
     target="$destination_directory$(basename "$f")"
 
