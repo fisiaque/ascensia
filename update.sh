@@ -1,12 +1,13 @@
 # THIS SH FILE REPLACES The OLD CONFIGS WITH MY UPDATED ONES
 #!/bin/bash
-script_directory=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+parent_directory=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+scripts_directory="$parent_directory/.scripts/"
 destination_directory="$HOME/.config/"
 
-#echo "The configs directory: $script_directory/.config/"
-#echo "The destination directory: $destination_directory"
+# RUN PACKAGES
+bash "$scripts_directory/packages.sh"
 
-for f in "$script_directory/.config/"*; do
+for f in "$parent_directory/.config/"*; do
     target="$destination_directory$(basename "$f")"
 
     if [ -d "$target" ]; then
