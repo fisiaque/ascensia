@@ -10,7 +10,7 @@ sudo pacman -Syu
 for package in "${packages[@]}"; do
     if ! pacman -Q "$package" &> /dev/null; then
         echo "$package is not installed. Installing..."
-        sudo pacman -S --noconfirm -needed "$package"
+        sudo pacman -S "$package"
     else
         echo "$package is already installed."
     fi
