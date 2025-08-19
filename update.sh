@@ -10,6 +10,7 @@ bash "$scripts_directory/packages.sh"
 systemctl --user start pipewire
 systemctl --user enable pipewire
 
+## edit .config
 for f in "$parent_directory/.config/"*; do
     target="$destination_directory$(basename "$f")"
 
@@ -18,6 +19,12 @@ for f in "$parent_directory/.config/"*; do
     fi
     
     ln -sf "$f" "$target"
+done
+
+## edit wayland sessions
+for f in "$parent_directory/.wayland-sessions/"*; do
+    target="/usr/share/wayland-sessions/$(basename "$f")"
+    sudo cp -f "$f" "$target" ## since only a file
 done
 
 echo "Finished Updating Baya's Hyprland Dotfiles!"
