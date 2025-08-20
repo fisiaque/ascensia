@@ -2,7 +2,6 @@
 #!/bin/bash
 parent_directory=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 scripts_directory="$parent_directory/.scripts/"
-destination_directory="$HOME/.config/"
 
 # RUN PACKAGES
 bash "$scripts_directory/packages.sh"
@@ -12,7 +11,7 @@ systemctl --user enable pipewire
 
 ## edit .config
 for f in "$parent_directory/.config/"*; do
-    target="$destination_directory$(basename "$f")"
+    target="$XDG_CONFIG_HOME$(basename "$f")"
 
     if [ -d "$target" ]; then
         rm -rf "$target"
