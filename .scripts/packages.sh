@@ -4,7 +4,7 @@
 ## pacman
 packages=(
     "kitty" "firefox" "brightnessctl" "playerctl" "dolphin" 
-    "wofi" "pipewire" "wireplumber"
+    "wofi" "pipewire" "wireplumber" "mpv"
 )
 
 sudo pacman -Syu --noconfirm
