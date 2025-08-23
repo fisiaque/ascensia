@@ -3,8 +3,8 @@
 
 ## pacman
 packages=(
-    "kitty" "firefox" "brightnessctl" "playerctl" "dolphin" 
-    "wofi" "pipewire" "wireplumber" "mpv"
+    "foot" "brightnessctl" "playerctl" "thunar" 
+    "wofi" "pipewire" "wireplumber" "mpv" "neovim"
 )
 
 sudo pacman -Syu --noconfirm
@@ -25,7 +25,7 @@ fi
 # check if yay exists: then install/refresh packages
 if command -v yay &> /dev/null; then
     yay_packages=(
-        "quickshell-git"
+        "quickshell-git" "zen-browser-bin"
     )
 
     yay -Syu --noconfirm
