@@ -11,7 +11,7 @@ systemctl --user enable pipewire
 
 ## edit .config
 for f in "$parent_directory/.config/"*; do
-    target="$XDG_CONFIG_HOME$(basename "$f")"
+    target="$XDG_CONFIG_HOME/$(basename "$f")"
 
     if [ -d "$target" ]; then
         rm -rf "$target"
