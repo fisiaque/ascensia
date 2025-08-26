@@ -6,9 +6,6 @@ scripts_directory="$parent_directory/.scripts/"
 # RUN PACKAGES
 bash "$scripts_directory/packages.sh"
 
-systemctl --user start pipewire
-systemctl --user enable pipewire
-
 ## edit .config
 for f in "$parent_directory/.config/"*; do
     target="$XDG_CONFIG_HOME/$(basename "$f")"
