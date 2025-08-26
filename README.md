@@ -1,3 +1,3 @@
-# hyprland-dots
+# hyprland-baya
 
-My own hyprland dotfiles on ARCH LINUX ONLY
+My own hyprland setup on arch
