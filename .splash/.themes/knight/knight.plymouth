@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name=knight
+Description=display roaring knight slash
+Comment=created By Faizul Haque
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/knight
+ScriptFile=/usr/share/plymouth/themes/knight/knight.script
