@@ -6,6 +6,7 @@ packages=(
     "foot" "brightnessctl" "playerctl" "thunar" 
     "wofi" "pipewire" "wireplumber" "mpv" "vim"
     "hyprpolkitagent" "gvfs" "gwenview" "firefox"
+    "plymouth"
 )
 
 sudo pacman -Syu --noconfirm

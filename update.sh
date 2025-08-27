@@ -23,4 +23,10 @@ for f in "$parent_directory/.wayland-sessions/"*; do
     sudo cp -f "$f" "$target" ## since only a file
 done
 
+## edit plymouth-themes 
+for f in "$parent_directory/.plymouth-themes/"*; do
+    target="/usr/share/plymouth/themes/$(basename "$f")"
+    sudo cp -rf "$f" "$target" ## since only a file
+done
+
 echo "Finished Updating Baya's Hyprland Dotfiles!"
