@@ -25,7 +25,7 @@ state.time = 0.0;
 //--------------------------------- Refresh (Logo animation) --------------------------
 
 # cycle through all images
-for (i = 0; i < 125; i++)
+for (i = 0; i < 8; i++)
   flyingman_image[i] = Image("progress-" + i + ".png");
 flyingman_sprite = Sprite();
 
@@ -37,7 +37,7 @@ progress = 0;
 
 fun refresh_callback ()
   {
-    flyingman_sprite.SetImage(flyingman_image[Math.Int(progress / 2) % 30]);
+    flyingman_sprite.SetImage(flyingman_image[Math.Int(progress / 2) % 8]);
     progress++;
   }
 
