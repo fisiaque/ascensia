@@ -5,6 +5,7 @@ scripts_directory="$parent_directory/.scripts/"
 
 # CHECKS
 NOCONFIRM=false
+NEEDED=false
 
 for arg in "$@"; do
     case $arg in
@@ -12,11 +13,15 @@ for arg in "$@"; do
             NOCONFIRM=true
             shift
             ;;
+        --needed)
+            NEEDED=true
+            shift
+            ;;
     esac
 done
 
 # RUN PACKAGES
-NOCONFIRM="$NOCONFIRM" bash "$scripts_directory/packages.sh"
+NOCONFIRM="$NOCONFIRM" NEEDED="$NEEDED" bash "$scripts_directory/packages.sh"
 
 ## edit .config
 for f in "$parent_directory/.config/"*; do

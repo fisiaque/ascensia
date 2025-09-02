@@ -8,26 +8,28 @@ packages=(
     "plymouth" 
 )
 
-# Build pacman options based on NOCONFIRM
-PACMAN_OPTS=""
+# Build options 
+OPTS=""
 if [ "$NOCONFIRM" = true ]; then
     echo "Running in no-confirm mode"
-    PACMAN_OPTS="$PACMAN_OPTS --noconfirm"
+    OPTS="$OPTS --noconfirm"
+fi
+if [ "$NEEDED" = true ]; then
+    echo "Running in needed mode"
+    OPTS="$OPTS --needed"
 fi
 
 # Update system
-sudo pacman -Syu $PACMAN_OPTS
+sudo pacman -Syu 
 
 # Install packages
-for package in "${packages[@]}"; do
-    sudo pacman -S $PACMAN_OPTS --needed "$package"
-done
+sudo pacman -S $OPTS "${packages[@]}"
 
 # Install yay if missing
 if ! command -v yay &> /dev/null; then
     mkdir -p /tmp/yay
     git clone https://aur.archlinux.org/yay.git /tmp/yay
-    cd /tmp/yay
+    cd /tmp/yay || exit
     if [ "$NOCONFIRM" = true ]; then
         makepkg -si --noconfirm
     else
@@ -38,18 +40,11 @@ fi
 
 # Refresh yay packages
 if command -v yay &> /dev/null; then
-    YAY_OPTS=""
-    if [ "$NOCONFIRM" = true ]; then
-        YAY_OPTS="--noconfirm"
-    fi
-
-    yay -Syu $YAY_OPTS
+    yay -Syu 
 
     yay_packages=(
         "quickshell-git"
     )
 
-    for yay_package in "${yay_packages[@]}"; do
-        yay -S $YAY_OPTS --needed "$yay_package"
-    done
+    yay -S $OPTS "${yay_packages[@]}"
 fi
