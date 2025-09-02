@@ -3,8 +3,20 @@
 parent_directory=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 scripts_directory="$parent_directory/.scripts/"
 
+# CHECKS
+NOCONFIRM=false
+
+for arg in "$@"; do
+    case $arg in
+        --noconfirm)
+            NOCONFIRM=true
+            shift
+            ;;
+    esac
+done
+
 # RUN PACKAGES
-bash "$scripts_directory/packages.sh"
+NOCONFIRM="$NOCONFIRM" bash "$scripts_directory/packages.sh"
 
 ## edit .config
 for f in "$parent_directory/.config/"*; do

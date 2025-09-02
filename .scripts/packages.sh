@@ -1,38 +1,55 @@
-# THIS BASH FILE MAKES SURE ALL NECCESSARY PACKAGES ARE UPDATED
 #!/bin/bash
 
-## pacman
+# Packages to install
 packages=(
     "foot" "brightnessctl" "playerctl" "thunar" 
     "wofi" "pipewire" "wireplumber" "mpv" "vim"
     "hyprpolkitagent" "gvfs" "gwenview" "firefox"
-    "plymouth"
+    "plymouth" 
 )
 
-sudo pacman -Syu --noconfirm
+# Build pacman options based on NOCONFIRM
+PACMAN_OPTS=""
+if [ "$NOCONFIRM" = true ]; then
+    echo "Running in no-confirm mode"
+    PACMAN_OPTS="$PACMAN_OPTS --noconfirm"
+fi
 
+# Update system
+sudo pacman -Syu $PACMAN_OPTS
+
+# Install packages
 for package in "${packages[@]}"; do
-    sudo pacman -S --noconfirm --needed "$package"
+    sudo pacman -S $PACMAN_OPTS --needed "$package"
 done
 
-## yay
+# Install yay if missing
 if ! command -v yay &> /dev/null; then
     mkdir -p /tmp/yay
     git clone https://aur.archlinux.org/yay.git /tmp/yay
     cd /tmp/yay
-    makepkg -si --noconfirm
+    if [ "$NOCONFIRM" = true ]; then
+        makepkg -si --noconfirm
+    else
+        makepkg -si
+    fi
     rm -rf /tmp/yay
 fi
 
-# check if yay exists: then install/refresh packages
+# Refresh yay packages
 if command -v yay &> /dev/null; then
+    YAY_OPTS=""
+    if [ "$NOCONFIRM" = true ]; then
+        YAY_OPTS="--noconfirm"
+    fi
+
+    yay -Syu $YAY_OPTS
+
     yay_packages=(
         "quickshell-git"
     )
 
-    yay -Syu --noconfirm
-
     for yay_package in "${yay_packages[@]}"; do
-        yay -S --noconfirm --needed "$yay_package"
+        yay -S $YAY_OPTS --needed "$yay_package"
     done
 fi
