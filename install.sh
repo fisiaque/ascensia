@@ -24,6 +24,7 @@ done
 NOCONFIRM="$NOCONFIRM" NEEDED="$NEEDED" bash "$scripts_directory/packages.sh"
 
 ## edit .config
+: "${XDG_CONFIG_HOME:=$HOME/.config}"
 for f in "$parent_directory/.config/"*; do
     target="$XDG_CONFIG_HOME/$(basename "$f")"
 

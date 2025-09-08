@@ -2,8 +2,8 @@
 
 # Packages to install
 packages=(
-    "foot" "brightnessctl" "playerctl" "thunar" 
-    "wofi" "pipewire" "wireplumber" "mpv" "vim"
+    "base-devel" "kitty" "brightnessctl" "playerctl" "thunar" 
+    "wofi" "pipewire" "wireplumber" "mpv" "neovim"
     "hyprpolkitagent" "gvfs" "gwenview" "firefox"
     "plymouth" 
 )
@@ -43,7 +43,7 @@ if command -v yay &> /dev/null; then
     yay -Syu 
 
     yay_packages=(
-        "quickshell-git"
+        "aylurs-gtk-shell-git"
     )
 
     yay -S $OPTS "${yay_packages[@]}"
