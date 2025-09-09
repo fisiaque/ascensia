@@ -43,7 +43,8 @@ if command -v yay &> /dev/null; then
     yay -Syu 
 
     yay_packages=(
-        "aylurs-gtk-shell-git"
+        "aylurs-gtk-shell-git" "libastal-io-git" "libastal-git"
+        "libastal-battery-git" "libastal-powerprofiles-git"
     )
 
     yay -S $OPTS "${yay_packages[@]}"
