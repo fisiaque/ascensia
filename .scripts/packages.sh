@@ -5,7 +5,7 @@ packages=(
     "base-devel" "kitty" "brightnessctl" "playerctl" "thunar" 
     "wofi" "pipewire" "wireplumber" "mpv" "neovim"
     "hyprpolkitagent" "gvfs" "gwenview" "firefox"
-    "plymouth" 
+    "plymouth" "dart-sass"
 )
 
 # Build options 
